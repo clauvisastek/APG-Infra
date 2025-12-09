@@ -1,0 +1,76 @@
+# Fichier d'exemple pour les variables Terraform
+# Copiez ce fichier vers terraform.tfvars et remplissez les valeurs
+
+# ============================================
+# Configuration Azure
+# ============================================
+
+subscription_id = "4ab02dca-abe6-4a04-bdd1-1dd301da6645"  # Votre subscription Azure for Students
+
+# ============================================
+# Configuration générale
+# ============================================
+
+project_name = "apg"
+environment  = "dev"
+location     = "eastus"  # Région testée et fonctionnelle
+
+# ============================================
+# SQL Database
+# ============================================
+
+sql_admin_username = "apgadmin"
+sql_admin_password = "CHANGEZ-MOI!VotreMotDePasse123!"  # Min 8 caractères, majuscule, minuscule, chiffre, spécial
+sql_database_name  = "APGDb"
+sql_sku_name       = "Basic"    # Basic (~5€/mois), S0 (~15€/mois), S1 (~30€/mois)
+sql_max_size_gb    = 2
+
+# Ajoutez votre IP publique pour accéder à la BDD depuis votre machine
+# Obtenez votre IP avec: curl ifconfig.me
+allowed_ip_addresses = [
+  # "123.456.789.012"  # Votre IP publique
+]
+
+# ============================================
+# Backend (App Service)
+# ============================================
+
+backend_app_service_plan_sku = "B1"  # B1 (~13€/mois), B2 (~26€/mois), S1 (~70€/mois)
+
+# Image Docker - sera remplacée par votre image GitHub Container Registry après le premier build
+backend_docker_image = "mcr.microsoft.com/dotnet/samples:aspnetapp"
+
+# OpenAI API Key (obligatoire pour Market Trends)
+openai_api_key = "sk-VOTRE-CLE-OPENAI-ICI"
+openai_model   = "gpt-4o"
+
+# Auth0 Configuration
+auth0_domain   = "astekcanada.ca.auth0.com"
+auth0_audience = "https://api.apg-astek.com"
+
+# ============================================
+# Frontend (Static Web App)
+# ============================================
+
+frontend_github_repo_url = "https://github.com/clauvisastek/APG-Frontend"
+frontend_github_branch   = "main"
+frontend_sku_tier        = "Free"  # Free (0€) ou Standard (~9€/mois)
+
+# ============================================
+# Options avancées
+# ============================================
+
+enable_key_vault            = false  # true pour activer Key Vault (~3€/mois)
+enable_application_insights = true   # Monitoring et logs (~0-5€/mois selon usage)
+
+# ============================================
+# Tags
+# ============================================
+
+tags = {
+  Project     = "APG"
+  Environment = "Development"
+  ManagedBy   = "Terraform"
+  Owner       = "clauvisastek"
+  CostCenter  = "MVP"
+}

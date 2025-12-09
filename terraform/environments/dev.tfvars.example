@@ -1,0 +1,25 @@
+# Configuration minimale pour environnement de développement
+
+subscription_id = "4ab02dca-abe6-4a04-bdd1-1dd301da6645"
+
+project_name = "apg"
+environment  = "dev"
+location     = "eastus"
+
+sql_admin_username = "apgadmin"
+sql_sku_name       = "Basic"
+sql_max_size_gb    = 2
+
+backend_app_service_plan_sku = "B1"
+backend_docker_image         = "mcr.microsoft.com/dotnet/samples:aspnetapp"
+
+frontend_sku_tier = "Free"
+
+enable_key_vault            = false
+enable_application_insights = true
+
+tags = {
+  Project     = "APG"
+  Environment = "Development"
+  ManagedBy   = "Terraform"
+}
