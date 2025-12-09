@@ -172,7 +172,7 @@ resource "azurerm_linux_web_app" "backend" {
 resource "azurerm_static_web_app" "frontend" {
   name                = "${var.project_name}-frontend-${var.environment}"
   resource_group_name = azurerm_resource_group.main.name
-  location            = var.location == "eastus" ? "eastus2" : var.location
+  location            = "Central US"
   sku_tier            = var.frontend_sku_tier
   sku_size            = var.frontend_sku_tier
 
